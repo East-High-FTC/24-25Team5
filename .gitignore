@@ -19,6 +19,36 @@
 *.tar.gz
 *.rar
 
+@TeleOp()
+public class GamepadOpMode extends OpMode  {
+    @Override
+    public void init()  {
+
+}
+
+    @Override
+    public void loop()  {
+      telemetry.addData("Left Stick x", gamepad1.left_stick_x);
+
+      if(gamepad1.left_stick_y < -0.5){
+telemetry.addData("Left stick", " is negitive and large")
+      }
+      else if(gamepad1.left_stick_y < 0){
+telemetry.addData("Left stick", " is negitive and small");
+      }
+      else if(gamepad1.left_stick_y < 0.5){
+telemetry.addData("Left stick", " is positive and small");
+      }
+      else{
+telemetry.addData("Left stick", " is positive and large");
+}
+      telemetry.addData("Left Stick y", gamepad1.left_stick_y);
+      telemetry.addData("A button", gamepad1.a);
+    
+}
+
+
+
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
