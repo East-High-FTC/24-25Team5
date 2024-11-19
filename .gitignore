@@ -32,15 +32,19 @@ public class GamepadOpMode extends OpMode  {
 
       if(gamepad1.left_stick_y < -0.5){
 telemetry.addData("Left stick", " is negitive and large")
+motor.setPower(-1);
       }
       else if(gamepad1.left_stick_y < 0){
 telemetry.addData("Left stick", " is negitive and small");
+motor.setPower(-0.5);
       }
       else if(gamepad1.left_stick_y < 0.5){
 telemetry.addData("Left stick", " is positive and small");
+motor.setPower(0.5);
       }
-      else{
+      else if(gamepad1.left_stick_y < 1){
 telemetry.addData("Left stick", " is positive and large");
+motor.setPower(1);
 }
       telemetry.addData("Left Stick y", gamepad1.left_stick_y);
       telemetry.addData("A button", gamepad1.a);
