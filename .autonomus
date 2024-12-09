@@ -1,1 +1,19 @@
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
+@Autonomous(name="My Autonomous", group="Autonomous")
+public class MyAutonomous extends LinearOpMode {
+    // Declare your OpMode members here
+    private ElapsedTime runtime = new ElapsedTime();
+    private DcMotor leftDrive = null;
+    private DcMotor rightDrive = null;
+
+    @Override
+    public void runOpMode() {
+        // Your autonomous code goes here
+    }
+
+    // Helper methods can be defined here
+}
