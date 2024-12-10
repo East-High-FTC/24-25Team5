@@ -1,1 +1,59 @@
+@TeleOp()
+public class GamepadOpMode extends OpMode  {
+    @Override
+    public void init()  {
+}
+    @Override
+    public void loop()  {
+      telemetry.addData("Left Stick x", gamepad1.left_stick_x);
+      telemetry.addData("Left Stick y", gamepad1.left_stick_y);
+      telemetry.addData("Right Stick x", gamepad1.right_stick_x);
+      telemetry.addData("Right Stick y", gamepad1.right_stick_y);
+      telemetry.addData("A button", gamepad1.a);
 
+// Left side
+      if(gamepad1.left_stick_y < -0.5){
+telemetry.addData("Left stick", " is negative and large")
+motor0.setPower(-1);
+motor2.setPower(-1);
+      }
+      else if(gamepad1.left_stick_y < 0){
+telemetry.addData("Left stick", " is negative and small");
+motor0.setPower(-0.5);
+motor2.setPower(-0.5);
+      }
+      else if(gamepad1.left_stick_y < 0.5){
+telemetry.addData("Left stick", " is positive and small");
+motor0.setPower(0.5);
+motor2.setPower(0.5);
+      }
+      else if(gamepad1.left_stick_y < 1){
+telemetry.addData("Left stick", " is positive and large");
+motor0.setPower(1);
+motor2.setPower(1);
+}
+      
+// Right side
+      if(gamepad1.right_stick_y < -0.5){
+telemetry.addData("Right stick", " is negative and large")
+motor1.setPower(-1);
+motor3.setPower(-1);
+      }
+      else if(gamepad1.right_stick_y < 0){
+telemetry.addData("Right stick", " is negative and small");
+motor1.setPower(-0.5);
+motor3.setPower(-0.5);
+      }
+      else if(gamepad1.right_stick_y < 0.5){
+telemetry.addData("Right stick", " is positive and small");
+motor1.setPower(0.5);
+motor3.setPower(0.5);
+      }
+      else if(gamepad1.right_stick_y < 1){
+telemetry.addData("Right stick", " is positive and large");
+motor1.setPower(1);
+motor3.setPower(1);
+}
+
+
+}
