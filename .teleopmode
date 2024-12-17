@@ -2,6 +2,16 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
+   @Override
+    public void loop()  {
+      telemetry.addData("Left Stick x", gamepad1.left_stick_x);
+      telemetry.addData("Left Stick y", gamepad1.left_stick_y);
+      telemetry.addData("Right Stick x", gamepad1.right_stick_x);
+      telemetry.addData("Right Stick y", gamepad1.right_stick_y);
+      telemetry.addData("A button", gamepad1.a);
+      telemetry.addData("B button", gamepad1.b);
+      telemetry.addData("Y button", gamepad1.y);
+      telemetry.addData("X button", gamepad1.x);
 
 
 @TeleOp()
@@ -14,18 +24,36 @@ public class GamepadOpMode extends OpMode  {
         motor1 = hardwareMap.get(DcMotor.class, "motor1");
         motor2 = hardwareMap.get(DcMotor.class, "motor2");
         motor3 = hardwareMap.get(DcMotor.class, "motor3");
+        armMotor = hardwareMap.get(DcMotor.class, "armmotor");
+
+}
+public void init() {
+
+    armMotor.setDirection(DcMotor.Direction.FORWARD);
+
+    armMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
 }
 
+@Override
+public void loop() {
 
-    @Override
-    public void loop()  {
-      telemetry.addData("Left Stick x", gamepad1.left_stick_x);
-      telemetry.addData("Left Stick y", gamepad1.left_stick_y);
-      telemetry.addData("Right Stick x", gamepad1.right_stick_x);
-      telemetry.addData("Right Stick y", gamepad1.right_stick_y);
-      telemetry.addData("A button", gamepad1.a);
-      telemetry.addData("B button", gamepad1.b);
+    if (gamepad1.y) {
+        armMotor.setPower(0.5);  
+    }
+   
+    else if (gamepad1.a) {
+         armMotor.setPower(-0.5); 
+    }
+
+    else {
+        // Stop the motor
+        armMotor.setPower(0);
+    }
+}
+
+
+
 
 // Left side
       if(gamepad1.left_stick_y < -0.5){
